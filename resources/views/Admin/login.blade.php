@@ -16,7 +16,7 @@
                             </div>
 
                             <div class="card-body">
-                                <form method="POST" action="{{ route('login') }}">
+                                <form method="POST" action="{{ route('super_admin.data.check') }}">
                                     @csrf
                                     <div class="form-floating mb-3">
                                         <input id="inputEmail" type="email" placeholder="name@example.com" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus />

@@ -21,7 +21,7 @@ class DivisionController extends Controller
             return datatables()->of($division)
 
             ->addColumn('created_at', function ($division){
-            return $division->created_at->diffForhumans();
+            return $division->created_at;
             })
             ->addColumn('action', 'Admin.division.action')
             ->rawColumns(['action'])

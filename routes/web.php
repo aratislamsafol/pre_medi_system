@@ -1,5 +1,11 @@
 <?php
 
+use App\Http\Controllers\Auth\DoctorLoginController;
+use App\Http\Controllers\Auth\SuperAdminLoginController;
+use App\Http\Controllers\DistricController;
+use App\Http\Controllers\DivisionController;
+use App\Http\Controllers\Doctor\DoctorController;
+use App\Http\Controllers\Super_Admin\SuperAdminController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -40,3 +46,19 @@ Route::get('view-distric', [DistricController::class,'view']);
 Route::get('get-districts/{id}', function($id){
     return json_encode(App\Models\District::where('division_id', $id)->get());
 });
+
+// ============================= Doctor ======================================
+
+Route::get('doctor/login/form',[DoctorLoginController::class,'index'])->name('doctor.login');
+Route::post('/doctor/login',[DoctorLoginController::class,'doctorLogin'])->name('doctor.data.save');
+Route::group(['middleware'=>'doctor'],function(){
+    Route::get('/doctor/dashboard',[DoctorController::class,'index'])->name('doctor.dash');
+});
+
+// ============================= SuperAdmin ======================================
+Route::get('/super_admin/login/form',[SuperAdminLoginController::class,'index'])->name('super_admin.login');
+Route::post('/super_admin/login',[SuperAdminLoginController::class,'superAdminLogin'])->name('super_admin.data.check');
+Route::group(['middleware'=>'super_admin'],function(){
+    Route::get('/super_admin/dashboard',[SuperAdminController::class,'index'])->name('super_admin.dash');
+});
+Route::get('logout',[SuperAdminController::class,'logout']);

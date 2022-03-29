@@ -20,7 +20,8 @@ class DistricController extends Controller
             return datatables()->of($district)
 
             ->addColumn('created_at', function ($district){
-            return $district->created_at->diffForhumans();
+            return $district->created_at;
+            // ->diffForhumans()
             })
             ->addColumn('action', 'Admin.distric.action')
             ->rawColumns(['action'])
