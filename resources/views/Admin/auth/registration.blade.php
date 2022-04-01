@@ -1,6 +1,6 @@
 @extends('layouts.registration_master')
 @section('reg_content')
-<form method="POST" action="">
+<form method="POST" action="{{route('admin.store')}}" enctype="multipart/form-data">
     @csrf
     <div class="row mb-3">
         <div class="col-md-6">
@@ -91,7 +91,7 @@
         </div>
     </div>
 </div>
-{{-- Age --}}
+
 <div class="row mb-3">
     @php
         $divisions = App\Models\Division::orderBy('prioroty', 'asc')->get();
@@ -119,7 +119,22 @@
         </div>
     </div>
 </div>
-{{-- Age --}}
+<div class="row mb-3">
+    <div class="col-md-6">
+        <div class="form-floating mb-3 mb-md-0">
+            <input value="{{ old('sadmin_image') }}" class="form-control @error('sadmin_image') is-invalid @enderror" name="sadmin_image" id="sadmin_image" type="file" />
+            @error('sadmin_image')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+            <label for="inputFirstName">Admin Image</label>
+        </div>
+    </div>
+
+</div>
+
+
     <div class="row mb-3">
         <div class="col-md-6">
             <div class="form-floating mb-3 mb-md-0">

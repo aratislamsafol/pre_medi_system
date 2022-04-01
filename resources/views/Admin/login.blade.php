@@ -10,11 +10,10 @@
                         <div class="card shadow-lg border-0 rounded-lg mt-5">
                             <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
                             <div class="card-header m-auto">
-                                {{-- <a href="{{route('super_admin.login')}}" class="btn btn-primary">Admin</a>
-                                <a href="{{route('admin.home')}}" class="btn btn btn-info">Doctor</a>
-                                <a href="{{route('user.login')}}" class="btn btn-success">Patient</a> --}}
+                                <a href="{{route('super_admin.login')}}" class="btn btn-primary">Admin</a>
+                                <a href="{{route('doctor.login')}}" class="btn btn btn-info">Doctor</a>
+                                <a href="{{route('login')}}" class="btn btn-success">Patient</a>
                             </div>
-
                             <div class="card-body">
                                 <form method="POST" action="{{ route('super_admin.data.check') }}">
                                     @csrf
@@ -48,7 +47,7 @@
                                         <a class="btn btn-link" href="{{ route('password.request') }}">
                                             {{ __('Forgot Your Password?') }}
                                         </a>
-                                    @endif
+                                        @endif
                                         <button type="submit" class="btn btn-primary">
                                             {{ __('Login') }}
                                         </button>
@@ -56,7 +55,7 @@
                                 </form>
                             </div>
                             <div class="card-footer text-center py-3">
-                                <div class="small"><a href="{{route('register')}}">Need an account? Sign up!</a></div>
+                                <div class="small"><a href="{{route('admin.register')}}">Need an account? Sign up!</a></div>
                             </div>
                         </div>
                     </div>

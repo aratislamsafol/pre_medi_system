@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\Auth\DoctorLoginController;
+use App\Http\Controllers\Auth\DoctorRegistrationController;
 use App\Http\Controllers\Auth\SuperAdminLoginController;
+use App\Http\Controllers\Auth\SuperAdminRegistrationController;
 use App\Http\Controllers\DistricController;
 use App\Http\Controllers\DivisionController;
 use App\Http\Controllers\Doctor\DoctorController;
@@ -54,6 +56,8 @@ Route::post('/doctor/login',[DoctorLoginController::class,'doctorLogin'])->name(
 Route::group(['middleware'=>'doctor'],function(){
     Route::get('/doctor/dashboard',[DoctorController::class,'index'])->name('doctor.dash');
 });
+Route::get('doctor/registration',[DoctorRegistrationController::class,'index'])->name('doctor.register');
+Route::post('doctor/store',[DoctorRegistrationController::class,'store'])->name('doctor.store');
 
 // ============================= SuperAdmin ======================================
 Route::get('/super_admin/login/form',[SuperAdminLoginController::class,'index'])->name('super_admin.login');
@@ -62,3 +66,6 @@ Route::group(['middleware'=>'super_admin'],function(){
     Route::get('/super_admin/dashboard',[SuperAdminController::class,'index'])->name('super_admin.dash');
 });
 Route::get('logout',[SuperAdminController::class,'logout']);
+Route::get('admin/registration',[SuperAdminRegistrationController::class,'index'])->name('admin.register');
+Route::post('admin/store',[SuperAdminRegistrationController::class,'store'])->name('admin.store');
+
